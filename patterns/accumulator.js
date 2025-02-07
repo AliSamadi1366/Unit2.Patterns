@@ -22,6 +22,14 @@ export function sumToN(n) {
  * @returns `1` if n is 0
  */
 export function factorial(n) {
+  if (typeof n !== "number") return NaN;
+  if (n < 0) return undefined;
+  if (n === 0) return 1;
+  let factorial = 1;
+  for (let i = 1; i <= n; i++) {
+    factorial *= i;
+  }
+  return factorial;
   // TODO
 }
 
@@ -32,6 +40,13 @@ export function factorial(n) {
  * @returns `[]` if n is 0 or negative
  */
 export function buildNArray(n) {
+  if (typeof n !== "number") return null;
+  if (n <= 0) return [];
+  const result = [];
+  for (let i = 1; i <= n; i++) {
+    result.push(i);
+  }
+  return result;
   // TODO
 }
 
@@ -40,14 +55,31 @@ export function buildNArray(n) {
  * @returns {string} the longest string in `strings`
  */
 export function getLongestString(strings) {
-  // TODO
+  let max = "";
+  for (const string of strings) {
+    if (string.length > max.length) {
+      max = string;
+    }
+  }
+  return max;
 }
+// TODO
 
 /**
  * @param {boolean[]} attendance - `true` means a student is present, `false` means a student is absent
  * @returns {number} the number of students present
  */
 export function countPresent(attendance) {
+  let number = 0;
+  for (const s of attendance) {
+    if (s === true) {
+      number += 1;
+    }
+    if (s === false) {
+      number += 0;
+    }
+  }
+  return number;
   // TODO
 }
 
@@ -62,5 +94,23 @@ export function countPresent(attendance) {
  * @returns `null` if `dna` is not a string
  */
 export function complementDNA(dna) {
-  // TODO
+  if (typeof dna !== "string") return null;
+  let complementAT = "";
+  let complementCG = "";
+  for (let i = 0; i < dna.length; i++) {
+    if (dna[i] === "A") {
+      complementAT = complementAT + "T";
+    }
+    if (dna[i] === "T") {
+      complementAT = complementAT + "A";
+    }
+    if (dna[i] === "C") {
+      complementCG = complementCG + "G";
+    }
+    if (dna[i] === "G") {
+      complementCG = complementCG + "C";
+    }
+  }
+  return complementAT + complementCG;
 }
+// TODO
